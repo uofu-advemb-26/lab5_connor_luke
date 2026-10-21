@@ -4,6 +4,7 @@
 int main(void)
 {
     int toggle = 0;
+    int count = 0;
     stdio_init_all();
     gpio_init(OUT_PIN);
     gpio_set_dir(OUT_PIN, GPIO_OUT);
@@ -12,6 +13,9 @@ int main(void)
     while (true) {
         toggle = !toggle;
         gpio_put(OUT_PIN, toggle);
+        while(count < 1000000) {
+            count++;
+        }
         sleep_ms(DELAY_MS);
     }
 }
